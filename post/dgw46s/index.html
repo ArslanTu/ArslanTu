@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>网页爬虫异常”403 Forbidden“的解决 | 星黎殿</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://arslantu.github.io/favicon.ico?v=1605679606007">
+<link rel="stylesheet" href="https://arslantu.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="今天第一次实战python网页爬虫，尝试爬取一个游戏网站上全部的游戏封面图片。
+（这些图片使用外站图床）
+测试中，成功获取到了所有图片的url，但是访问图片url时一直报错“403 Forbidden”。
+（opener添加了headers..." />
+    <meta name="keywords" content="Python,爬虫,编程" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://arslantu.github.io">
+        <img src="https://arslantu.github.io/images/avatar.png?v=1605679606007" class="site-logo">
+        <h1 class="site-title">星黎殿</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      一只菜鸟的旅程。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://arslantu.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">网页爬虫异常”403 Forbidden“的解决</h2>
+            <div class="post-date">2020-08-13</div>
+            
+              <div class="feature-container" style="background-image: url('https://arslantu.github.io/post-images/dgw46s.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>今天第一次实战python网页爬虫，尝试爬取一个游戏网站上全部的游戏封面图片。<br>
+（这些图片使用外站图床）<br>
+测试中，成功获取到了所有图片的url，但是访问图片url时一直报错“403 Forbidden”。<br>
+（opener添加了headers）<br>
+搜索后我尝试了几个可能的解决方法：</p>
+<ul>
+<li>多写几个headers，每次随机抽取使用</li>
+<li>设置若干代理服务器</li>
+<li>设置<code>time.sleep()</code>以降低访问频率</li>
+</ul>
+<p>但都解决不了问题。<br>
+在翻看其他人写的爬虫时，我注意到有些爬虫的headers中除了User-Agent还有一项Referer。<br>
+于是我仔细地看了遍页面的Request Headers，发现有一项“referer”的值正是该游戏网站的url。<br>
+我猜测，要在headers中添加referer信息“告知”网站这是真实用户的访问请求，爬虫才能正常访问。<br>
+给headers添加<code>(&quot;Referer&quot;, &quot;https://****.fun&quot;)</code>后，爬虫果然可以进行正常爬取。</p>
+<p>PS.<br>
+初次编写爬虫，虽然可以正常运行并爬取了3000多张图片，但是爬取速度并不理想。<br>
+下一步学习编写多线程爬虫来提高运行效率。</p>
+<p>2020年8月13日</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://arslantu.github.io/tag/Rdwfoy4Mn/" class="tag">
+                    Python
+                  </a>
+                
+                  <a href="https://arslantu.github.io/tag/N0OeB4-84P/" class="tag">
+                    爬虫
+                  </a>
+                
+                  <a href="https://arslantu.github.io/tag/NvsqdktU-j/" class="tag">
+                    编程
+                  </a>
+                
+              </div>
+            
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e66eb5c467de8a2d291e',
+        clientSecret: '561102cb0566fa78a1d64ee69dd53fd722fa1ee2',
+        repo: 'arslantu.github.io',
+        owner: 'ArslanTu',
+        admin: ['ArslanTu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Scrapy爬虫多开 | 星黎殿</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://arslantu.github.io/favicon.ico?v=1605679606007">
+<link rel="stylesheet" href="https://arslantu.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Scrapy爬虫框架在实际使用时，单个项目内一次只能运行一个爬虫。
+如果想一次运行多个爬虫，可以手动修改配置文件。
+按如下步骤操作：
+首先由此获取crawl命令的源码
+在spiders文件夹的同级目录下创建一个文件夹，名称自拟。
+随后进入该..." />
+    <meta name="keywords" content="Python,爬虫,编程" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://arslantu.github.io">
+        <img src="https://arslantu.github.io/images/avatar.png?v=1605679606007" class="site-logo">
+        <h1 class="site-title">星黎殿</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      一只菜鸟的旅程。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://arslantu.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Scrapy爬虫多开</h2>
+            <div class="post-date">2020-08-22</div>
+            
+              <div class="feature-container" style="background-image: url('https://arslantu.github.io/post-images/y173tv.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>Scrapy爬虫框架在实际使用时，单个项目内一次只能运行一个爬虫。<br>
+如果想一次运行多个爬虫，可以手动修改配置文件。<br>
+按如下步骤操作：</p>
+<p>首先由此获取crawl命令的源码<br>
+在spiders文件夹的同级目录下创建一个文件夹，名称自拟。<br>
+随后进入该文件夹，创建.py文件，名称依然可以自拟。<br>
+将crawl命令源码复制进去。<br>
+其他部分保持不变，我们重新编写run()方法如下：</p>
+<pre><code># 获取爬虫列表
+spd_loader_list = self.crawler_process.spider_loader.list()
+# 遍历各爬虫
+for spname in spd_loader_list or args:
+    self.crawler_process.crawl(spname, **opts.spargs)
+    print(&quot;此时启动的爬虫为：&quot; + spname)
+self.crawler_process.start()
+</code></pre>
+<p>在此文件同级目录下创建初始化文件，文件名为：init.py<br>
+最后我们需要添加自定义命令。在settings.py文件中，添加<br>
+<code>COMMANDS_MODULE='项目核心目录.自定义命令源码目录'</code><br>
+其中项目核心目录名即为项目命，源码目录名即为step2中所创建文件夹名。<br>
+做完上述步骤后，在命令行中输入<code>scrapy -h</code>并执行，应当可以看到我们自定义的命令名。<br>
+创建几个爬虫然后测试运行即可看到效果。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://arslantu.github.io/tag/Rdwfoy4Mn/" class="tag">
+                    Python
+                  </a>
+                
+                  <a href="https://arslantu.github.io/tag/N0OeB4-84P/" class="tag">
+                    爬虫
+                  </a>
+                
+                  <a href="https://arslantu.github.io/tag/NvsqdktU-j/" class="tag">
+                    编程
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://arslantu.github.io/post/u3ydhb/">
+                  <h3 class="post-title">
+                    多线程Python网页爬虫
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e66eb5c467de8a2d291e',
+        clientSecret: '561102cb0566fa78a1d64ee69dd53fd722fa1ee2',
+        repo: 'arslantu.github.io',
+        owner: 'ArslanTu',
+        admin: ['ArslanTu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

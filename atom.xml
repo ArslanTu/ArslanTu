@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://arslantu.github.io</id>
+    <title>星黎殿</title>
+    <updated>2020-11-18T06:08:16.560Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://arslantu.github.io"/>
+    <link rel="self" href="https://arslantu.github.io/atom.xml"/>
+    <subtitle>一只菜鸟的旅程。</subtitle>
+    <logo>https://arslantu.github.io/images/avatar.png</logo>
+    <icon>https://arslantu.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, 星黎殿</rights>
+    <entry>
+        <title type="html"><![CDATA[Scrapy爬虫多开]]></title>
+        <id>https://arslantu.github.io/post/y173tv/</id>
+        <link href="https://arslantu.github.io/post/y173tv/">
+        </link>
+        <updated>2020-08-22T10:58:59.000Z</updated>
+        <content type="html"><![CDATA[<p>Scrapy爬虫框架在实际使用时，单个项目内一次只能运行一个爬虫。<br>
+如果想一次运行多个爬虫，可以手动修改配置文件。<br>
+按如下步骤操作：</p>
+<p>首先由此获取crawl命令的源码<br>
+在spiders文件夹的同级目录下创建一个文件夹，名称自拟。<br>
+随后进入该文件夹，创建.py文件，名称依然可以自拟。<br>
+将crawl命令源码复制进去。<br>
+其他部分保持不变，我们重新编写run()方法如下：</p>
+<pre><code># 获取爬虫列表
+spd_loader_list = self.crawler_process.spider_loader.list()
+# 遍历各爬虫
+for spname in spd_loader_list or args:
+    self.crawler_process.crawl(spname, **opts.spargs)
+    print(&quot;此时启动的爬虫为：&quot; + spname)
+self.crawler_process.start()
+</code></pre>
+<p>在此文件同级目录下创建初始化文件，文件名为：init.py<br>
+最后我们需要添加自定义命令。在settings.py文件中，添加<br>
+<code>COMMANDS_MODULE='项目核心目录.自定义命令源码目录'</code><br>
+其中项目核心目录名即为项目命，源码目录名即为step2中所创建文件夹名。<br>
+做完上述步骤后，在命令行中输入<code>scrapy -h</code>并执行，应当可以看到我们自定义的命令名。<br>
+创建几个爬虫然后测试运行即可看到效果。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[多线程Python网页爬虫]]></title>
+        <id>https://arslantu.github.io/post/u3ydhb/</id>
+        <link href="https://arslantu.github.io/post/u3ydhb/">
+        </link>
+        <updated>2020-08-18T05:51:01.000Z</updated>
+        <content type="html"><![CDATA[<p>今天尝试改进之前的爬虫，利用多线程与队列提高爬取效率。<br>
+想法是分为三个线程：</p>
+<p>线程1负责逐页爬取帖子的url并将其置入队列中。<br>
+线程2负责逐个获取帖子的标题、图片，并根据标题命名保存。<br>
+线程3为控制线程，每60秒检测一次队列，在队列为空时终止程序。<br>
+测试过程中依然存在一些问题：</p>
+<p>虽然使用了多线程，但线程1与2间运行速度相差过大，运行依然低效，整个爬取过程耗时2500s。<br>
+若使用<code>exit（）</code>结束程序，在VSCode内运行时会报错，但实际上并不是错误。<br>
+最后，我本意是用搜狗微信来爬取公众号文章，但搜狗存在反扒机制，现阶段我还不会解决，以后再说。<br>
+以下为全部代码，涉及网站的url等信息以星号隐去：</p>
+<pre><code>import re
+import urllib.request
+import urllib.error
+import threading
+import queue
+import time
+
+urlqueue = queue.Queue()
+headers = [
+    ('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36')
+]
+opener = urllib.request.build_opener(urllib.request.HTTPSHandler, urllib.request.HTTPHandler)
+opener.addheaders = headers
+urllib.request.install_opener(opener)
+
+
+def dataGet(url):
+    data = opener.open(url).read().decode()
+    return data
+
+
+# 线程1 获取url列表
+class urlGet(threading.Thread):
+    def __init__(self, pageStart, pageEnd, urlqueue):
+        threading.Thread.__init__(self)
+        self.pageStart = pageStart
+        self.pageEnd = pageEnd
+        self.urlqueue = urlqueue
+
+    def run(self):
+        for i in range(self.pageStart, self.pageEnd + 1):
+            print(&quot;正在获取第&quot; + str(i) + &quot;页。\n&quot;)
+            try:
+                url = &quot;https://****/page/&quot; + str(i) + &quot;/&quot;
+                data = dataGet(url)
+                pattern1 = '&lt;ul class=&quot;con_ul clearfix&quot;&gt;.*?&lt;/ul&gt;'
+                pattern2 = 'https:/****/.*?/'
+                data1 = re.compile(pattern1, re.S).findall(data)
+                data2 = re.compile(pattern2, re.S).findall(data1[0])
+                for j in range(len(data2)):
+                    self.urlqueue.put(data2[j])
+                    self.urlqueue.task_done()
+                print(&quot;第&quot; + str(i) + &quot;页获取完毕。&quot;)
+            except urllib.error.URLError as e:
+                if hasattr(e, 'code'):
+                    print(e.code)
+                if hasattr(e, 'reason'):
+                    print(e.reason)
+                time.sleep(10)
+            except Exception as e:
+                print(&quot;exception:&quot; + str(e))
+                time.sleep(1)
+
+
+# 线程2 逐一处理队列中的url
+class picGet(threading.Thread):
+    def __init__(self, urlqueue):
+        threading.Thread.__init__(self)
+        self.urlqueue = urlqueue
+
+    def run(self):
+        while (True):
+            url = self.urlqueue.get()
+            data = dataGet(url)
+            # 正则表达式过滤信息
+            pattern1 = '&lt;div class=&quot;content&quot;&gt;.*?&lt;div class=&quot;dat_d&quot;'
+            pattern2 = '&lt;img src=&quot;.*?&quot;'
+            pattern3 = '&lt;img src=&quot;'
+            pattern4 = '&quot;'
+            pattern5 = '****.*?****'
+            pattern6 = '****'
+            data1 = re.compile(pattern1, re.S).findall(data)
+            data2 = re.compile(pattern2, re.S).findall(data1[0])
+            for i in range(len(data2)):
+                data2[i] = re.sub(pattern3, &quot;&quot;, data2[i])
+                data2[i] = re.sub(pattern4, &quot;&quot;, data2[i])
+            title = re.compile(pattern5).findall(data)
+            titleText = re.sub(pattern6, &quot;&quot;, title[0])
+            for j in range(len(data2)):
+                imgName = &quot;F:/****/&quot; + titleText + &quot;_&quot; + str(j+1) + &quot;.jpg&quot;
+                try:
+                    print(&quot;正在保存&quot; + titleText + &quot;的第&quot; + str(j+1) + &quot;张图片&quot;)
+                    urllib.request.urlretrieve(data2[j], filename=imgName)
+                except urllib.error.URLError as e:
+                    if hasattr(e, 'code'):
+                        print(e.code)
+                    if hasattr(e, 'reason'):
+                        print(e.reason)
+                except Exception as e:
+                    print(&quot;exception:&quot; + str(e))
+
+
+# 并行控制程序，若60秒未响应，且url队列为空，则判断执行成功
+class control(threading.Thread):
+    def __init__(self, urlqueue):
+        threading.Thread.__init__(self)
+        self.urlqueue = urlqueue
+
+    def run(self):
+        while(True):
+            print(&quot;程序运行中。。。&quot;)
+            time.sleep(60)
+            if self.urlqueue.empty():
+                time_end = time.time()
+                print(&quot;程序执行完毕！\n&quot;)
+                print('time cost: ' + str(time_end - time_start) + 's')
+                exit()
+
+# 实例化运行
+time_start = time.time()
+pageStart = 1
+pageEnd = 12
+t1 = urlGet(pageStart, pageEnd, urlqueue)
+t1.start()
+t2 = picGet(urlqueue)
+t2.start()
+t3 = control(urlqueue)
+t3.start()
+</code></pre>
+<p>2020年8月18日</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[网页爬虫异常”403 Forbidden“的解决]]></title>
+        <id>https://arslantu.github.io/post/dgw46s/</id>
+        <link href="https://arslantu.github.io/post/dgw46s/">
+        </link>
+        <updated>2020-08-13T05:44:39.000Z</updated>
+        <content type="html"><![CDATA[<p>今天第一次实战python网页爬虫，尝试爬取一个游戏网站上全部的游戏封面图片。<br>
+（这些图片使用外站图床）<br>
+测试中，成功获取到了所有图片的url，但是访问图片url时一直报错“403 Forbidden”。<br>
+（opener添加了headers）<br>
+搜索后我尝试了几个可能的解决方法：</p>
+<ul>
+<li>多写几个headers，每次随机抽取使用</li>
+<li>设置若干代理服务器</li>
+<li>设置<code>time.sleep()</code>以降低访问频率</li>
+</ul>
+<p>但都解决不了问题。<br>
+在翻看其他人写的爬虫时，我注意到有些爬虫的headers中除了User-Agent还有一项Referer。<br>
+于是我仔细地看了遍页面的Request Headers，发现有一项“referer”的值正是该游戏网站的url。<br>
+我猜测，要在headers中添加referer信息“告知”网站这是真实用户的访问请求，爬虫才能正常访问。<br>
+给headers添加<code>(&quot;Referer&quot;, &quot;https://****.fun&quot;)</code>后，爬虫果然可以进行正常爬取。</p>
+<p>PS.<br>
+初次编写爬虫，虽然可以正常运行并爬取了3000多张图片，但是爬取速度并不理想。<br>
+下一步学习编写多线程爬虫来提高运行效率。</p>
+<p>2020年8月13日</p>
+]]></content>
+    </entry>
+</feed>

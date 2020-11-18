@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>多线程Python网页爬虫 | 星黎殿</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://arslantu.github.io/favicon.ico?v=1605679606007">
+<link rel="stylesheet" href="https://arslantu.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="今天尝试改进之前的爬虫，利用多线程与队列提高爬取效率。
+想法是分为三个线程：
+线程1负责逐页爬取帖子的url并将其置入队列中。
+线程2负责逐个获取帖子的标题、图片，并根据标题命名保存。
+线程3为控制线程，每60秒检测一次队列，在队列为空时终..." />
+    <meta name="keywords" content="Python,爬虫,编程" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://arslantu.github.io">
+        <img src="https://arslantu.github.io/images/avatar.png?v=1605679606007" class="site-logo">
+        <h1 class="site-title">星黎殿</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      一只菜鸟的旅程。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://arslantu.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">多线程Python网页爬虫</h2>
+            <div class="post-date">2020-08-18</div>
+            
+              <div class="feature-container" style="background-image: url('https://arslantu.github.io/post-images/u3ydhb.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>今天尝试改进之前的爬虫，利用多线程与队列提高爬取效率。<br>
+想法是分为三个线程：</p>
+<p>线程1负责逐页爬取帖子的url并将其置入队列中。<br>
+线程2负责逐个获取帖子的标题、图片，并根据标题命名保存。<br>
+线程3为控制线程，每60秒检测一次队列，在队列为空时终止程序。<br>
+测试过程中依然存在一些问题：</p>
+<p>虽然使用了多线程，但线程1与2间运行速度相差过大，运行依然低效，整个爬取过程耗时2500s。<br>
+若使用<code>exit（）</code>结束程序，在VSCode内运行时会报错，但实际上并不是错误。<br>
+最后，我本意是用搜狗微信来爬取公众号文章，但搜狗存在反扒机制，现阶段我还不会解决，以后再说。<br>
+以下为全部代码，涉及网站的url等信息以星号隐去：</p>
+<pre><code>import re
+import urllib.request
+import urllib.error
+import threading
+import queue
+import time
+
+urlqueue = queue.Queue()
+headers = [
+    ('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36')
+]
+opener = urllib.request.build_opener(urllib.request.HTTPSHandler, urllib.request.HTTPHandler)
+opener.addheaders = headers
+urllib.request.install_opener(opener)
+
+
+def dataGet(url):
+    data = opener.open(url).read().decode()
+    return data
+
+
+# 线程1 获取url列表
+class urlGet(threading.Thread):
+    def __init__(self, pageStart, pageEnd, urlqueue):
+        threading.Thread.__init__(self)
+        self.pageStart = pageStart
+        self.pageEnd = pageEnd
+        self.urlqueue = urlqueue
+
+    def run(self):
+        for i in range(self.pageStart, self.pageEnd + 1):
+            print(&quot;正在获取第&quot; + str(i) + &quot;页。\n&quot;)
+            try:
+                url = &quot;https://****/page/&quot; + str(i) + &quot;/&quot;
+                data = dataGet(url)
+                pattern1 = '&lt;ul class=&quot;con_ul clearfix&quot;&gt;.*?&lt;/ul&gt;'
+                pattern2 = 'https:/****/.*?/'
+                data1 = re.compile(pattern1, re.S).findall(data)
+                data2 = re.compile(pattern2, re.S).findall(data1[0])
+                for j in range(len(data2)):
+                    self.urlqueue.put(data2[j])
+                    self.urlqueue.task_done()
+                print(&quot;第&quot; + str(i) + &quot;页获取完毕。&quot;)
+            except urllib.error.URLError as e:
+                if hasattr(e, 'code'):
+                    print(e.code)
+                if hasattr(e, 'reason'):
+                    print(e.reason)
+                time.sleep(10)
+            except Exception as e:
+                print(&quot;exception:&quot; + str(e))
+                time.sleep(1)
+
+
+# 线程2 逐一处理队列中的url
+class picGet(threading.Thread):
+    def __init__(self, urlqueue):
+        threading.Thread.__init__(self)
+        self.urlqueue = urlqueue
+
+    def run(self):
+        while (True):
+            url = self.urlqueue.get()
+            data = dataGet(url)
+            # 正则表达式过滤信息
+            pattern1 = '&lt;div class=&quot;content&quot;&gt;.*?&lt;div class=&quot;dat_d&quot;'
+            pattern2 = '&lt;img src=&quot;.*?&quot;'
+            pattern3 = '&lt;img src=&quot;'
+            pattern4 = '&quot;'
+            pattern5 = '****.*?****'
+            pattern6 = '****'
+            data1 = re.compile(pattern1, re.S).findall(data)
+            data2 = re.compile(pattern2, re.S).findall(data1[0])
+            for i in range(len(data2)):
+                data2[i] = re.sub(pattern3, &quot;&quot;, data2[i])
+                data2[i] = re.sub(pattern4, &quot;&quot;, data2[i])
+            title = re.compile(pattern5).findall(data)
+            titleText = re.sub(pattern6, &quot;&quot;, title[0])
+            for j in range(len(data2)):
+                imgName = &quot;F:/****/&quot; + titleText + &quot;_&quot; + str(j+1) + &quot;.jpg&quot;
+                try:
+                    print(&quot;正在保存&quot; + titleText + &quot;的第&quot; + str(j+1) + &quot;张图片&quot;)
+                    urllib.request.urlretrieve(data2[j], filename=imgName)
+                except urllib.error.URLError as e:
+                    if hasattr(e, 'code'):
+                        print(e.code)
+                    if hasattr(e, 'reason'):
+                        print(e.reason)
+                except Exception as e:
+                    print(&quot;exception:&quot; + str(e))
+
+
+# 并行控制程序，若60秒未响应，且url队列为空，则判断执行成功
+class control(threading.Thread):
+    def __init__(self, urlqueue):
+        threading.Thread.__init__(self)
+        self.urlqueue = urlqueue
+
+    def run(self):
+        while(True):
+            print(&quot;程序运行中。。。&quot;)
+            time.sleep(60)
+            if self.urlqueue.empty():
+                time_end = time.time()
+                print(&quot;程序执行完毕！\n&quot;)
+                print('time cost: ' + str(time_end - time_start) + 's')
+                exit()
+
+# 实例化运行
+time_start = time.time()
+pageStart = 1
+pageEnd = 12
+t1 = urlGet(pageStart, pageEnd, urlqueue)
+t1.start()
+t2 = picGet(urlqueue)
+t2.start()
+t3 = control(urlqueue)
+t3.start()
+</code></pre>
+<p>2020年8月18日</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://arslantu.github.io/tag/Rdwfoy4Mn/" class="tag">
+                    Python
+                  </a>
+                
+                  <a href="https://arslantu.github.io/tag/N0OeB4-84P/" class="tag">
+                    爬虫
+                  </a>
+                
+                  <a href="https://arslantu.github.io/tag/NvsqdktU-j/" class="tag">
+                    编程
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://arslantu.github.io/post/dgw46s/">
+                  <h3 class="post-title">
+                    网页爬虫异常”403 Forbidden“的解决
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e66eb5c467de8a2d291e',
+        clientSecret: '561102cb0566fa78a1d64ee69dd53fd722fa1ee2',
+        repo: 'arslantu.github.io',
+        owner: 'ArslanTu',
+        admin: ['ArslanTu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
