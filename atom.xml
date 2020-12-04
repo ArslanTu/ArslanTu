@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://arslantu.github.io</id>
     <title>星黎殿</title>
-    <updated>2020-12-04T07:21:58.571Z</updated>
+    <updated>2020-12-04T07:28:09.483Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://arslantu.github.io"/>
     <link rel="self" href="https://arslantu.github.io/atom.xml"/>
@@ -26,6 +26,8 @@
 　　城南校区虽然比较偏远，但交通还算方便，而且离市图书馆很近。无事的周末里，图书馆便成了我常去的地方。我向来喜欢读书，而且“食谱”比较杂，什么都看一点<s>但好像看完都没记住</s>，只要100元押金即可办理借书卡免费借阅的市图书馆便成了我的藏宝库。除了借书外，我也常去学校的小书店。有几个同学也会在课间操时间假称身体不舒服而溜去书店。书店中，除了辅导资料外，最多的是村上春树和东野圭吾的作品。我也因此喜欢上，并读了这二位的许多书<s>店里好像还有某人喜欢的渡边淳一</s>。说来，三体三部曲我也是在这里买的，这三本应该是班里被阅读最多的书了。那两年买的书（高三搬去老校区，那边没书店），加上三年里订阅的杂志，在我毕业搬回永丰的时候，着实造成了不小的麻烦，因此我吸取教训，这两年很少买实体书了。<br>
 <img src="https://arslantu.github.io/post-images/1607066093904.jpg" alt="" loading="lazy"><br>
 <img src="https://arslantu.github.io/post-images/1607066106116.jpg" alt="" loading="lazy"></p>
+<p>2020年12月4日<br>
+未完</p>
 ]]></content>
     </entry>
     <entry>
@@ -33,7 +35,7 @@
         <id>https://arslantu.github.io/post/y173tv/</id>
         <link href="https://arslantu.github.io/post/y173tv/">
         </link>
-        <updated>2020-08-22T10:58:59.000Z</updated>
+        <updated>2020-11-22T10:58:59.000Z</updated>
         <content type="html"><![CDATA[<p>Scrapy爬虫框架在实际使用时，单个项目内一次只能运行一个爬虫。<br>
 如果想一次运行多个爬虫，可以手动修改配置文件。<br>
 按如下步骤操作：</p>
@@ -56,6 +58,7 @@ self.crawler_process.start()
 其中项目核心目录名即为项目命，源码目录名即为step2中所创建文件夹名。<br>
 做完上述步骤后，在命令行中输入<code>scrapy -h</code>并执行，应当可以看到我们自定义的命令名。<br>
 创建几个爬虫然后测试运行即可看到效果。</p>
+<p>2020年11月22日</p>
 ]]></content>
     </entry>
     <entry>
@@ -63,7 +66,7 @@ self.crawler_process.start()
         <id>https://arslantu.github.io/post/u3ydhb/</id>
         <link href="https://arslantu.github.io/post/u3ydhb/">
         </link>
-        <updated>2020-08-18T05:51:01.000Z</updated>
+        <updated>2020-11-18T05:51:01.000Z</updated>
         <content type="html"><![CDATA[<p>今天尝试改进之前的爬虫，利用多线程与队列提高爬取效率。<br>
 想法是分为三个线程：</p>
 <p>线程1负责逐页爬取帖子的url并将其置入队列中。<br>
@@ -193,7 +196,7 @@ t2.start()
 t3 = control(urlqueue)
 t3.start()
 </code></pre>
-<p>2020年8月18日</p>
+<p>2020年11月18日</p>
 ]]></content>
     </entry>
     <entry>
@@ -201,7 +204,7 @@ t3.start()
         <id>https://arslantu.github.io/post/dgw46s/</id>
         <link href="https://arslantu.github.io/post/dgw46s/">
         </link>
-        <updated>2020-08-13T05:44:39.000Z</updated>
+        <updated>2020-11-13T05:44:39.000Z</updated>
         <content type="html"><![CDATA[<p>今天第一次实战python网页爬虫，尝试爬取一个游戏网站上全部的游戏封面图片。<br>
 （这些图片使用外站图床）<br>
 测试中，成功获取到了所有图片的url，但是访问图片url时一直报错“403 Forbidden”。<br>
@@ -220,7 +223,7 @@ t3.start()
 <p>PS.<br>
 初次编写爬虫，虽然可以正常运行并爬取了3000多张图片，但是爬取速度并不理想。<br>
 下一步学习编写多线程爬虫来提高运行效率。</p>
-<p>2020年8月13日</p>
+<p>2020年11月13日</p>
 ]]></content>
     </entry>
 </feed>
