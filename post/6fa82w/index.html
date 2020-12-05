@@ -1,22 +1,128 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://arslantu.github.io</id>
-    <title>星黎殿</title>
-    <updated>2020-12-05T08:26:27.934Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://arslantu.github.io"/>
-    <link rel="self" href="https://arslantu.github.io/atom.xml"/>
-    <subtitle>一只菜鸟的旅程。</subtitle>
-    <logo>https://arslantu.github.io/images/avatar.png</logo>
-    <icon>https://arslantu.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, 星黎殿</rights>
-    <entry>
-        <title type="html"><![CDATA[数据结构 Chap2 线性表]]></title>
-        <id>https://arslantu.github.io/post/6fa82w/</id>
-        <link href="https://arslantu.github.io/post/6fa82w/">
-        </link>
-        <updated>2020-12-05T08:24:19.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="chap2-线性表">Chap2 线性表</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>数据结构 Chap2 线性表 | 星黎殿</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://arslantu.github.io/favicon.ico?v=1607156783895">
+<link rel="stylesheet" href="https://arslantu.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Chap2 线性表
+
+
+Chap2 线性表
+
+2.1 线性表的定义与特点
+2.3 线性表的类型定义
+2.4 线性表的顺序表示和实现
+2.5 线性表的链式表示和实现
+
+2.5.1 单链表的定义和表示
+
+
+
+
+
+
+2.1 线性表的定义与特点
+
+..." />
+    <meta name="keywords" content="数据结构,笔记,C++,编程" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://arslantu.github.io">
+        <img src="https://arslantu.github.io/images/avatar.png?v=1607156783895" class="site-logo">
+        <h1 class="site-title">星黎殿</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      一只菜鸟的旅程。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://arslantu.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">数据结构 Chap2 线性表</h2>
+            <div class="post-date">2020-12-05</div>
+            
+              <div class="feature-container" style="background-image: url('https://arslantu.github.io/post-images/6fa82w.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="chap2-线性表">Chap2 线性表</h1>
 <!-- TOC -->
 <ul>
 <li><a href="#chap2-%E7%BA%BF%E6%80%A7%E8%A1%A8">Chap2 线性表</a>
@@ -331,223 +437,95 @@ int main()
 	return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[高中（一）]]></title>
-        <id>https://arslantu.github.io/post/1x581x/</id>
-        <link href="https://arslantu.github.io/post/1x581x/">
-        </link>
-        <updated>2020-12-04T06:56:04.000Z</updated>
-        <content type="html"><![CDATA[<p><em><strong>写在前面：有时候还挺想写点东西的，虽然文笔比较差，但也就厚着脸皮写了，即使被看到也没关系，反正只要我不尴尬，尴尬的就是别人嘛。</strong></em><br>
-　　上了大学以后，我时常会想起一些过去的事，这已经成了一种习惯。从在青海的孩童时期，在哈尔滨读小学的三年，回到老家永丰的六年，再到升入吉安白鹭洲中学的三年高中时光。我在脑海中一遍又一遍地回忆、确认这些一段又一段的记忆，害怕着有一天会把他们忘在哪个不知名的角落。<br>
-　　而想的最多的，还是在白鹭洲度过的那段日子。我问过自己很多次，是更喜欢现在看起来十分自由、做三休四的大学生活，还是那个每天上十节课，作业、考试不断的高中生活？<br>
-　　答案总是后者。<br>
-　　今天我依然记得正式分班（之所以说正式分班，是因为高中开学时军训的分班仅是临时性的，一周后还要正式分班）的那一天。在公告栏确认自己分到八班后，我从八班教室的后门进去，看到门口还空着一个座位，便坐了下去。那时候坐在旁边位子上的是LY，他也成了我在八班第二个认识的人（第一个是YYL，军训分班时我们在一起）。人都到齐后，班主任胡老师要选出一个班长，我记得他那时候是想挑个声音大的同学，他问，谁在军训检阅时带过队。我小心翼翼地举起了手，于是，在军训阅兵第一名的九班带过队的我成了班长。到现在我还觉得老师的决定挺草率的。<br>
-　　就我自己的体验而言，高中时代应该分为两个部分，前半部分里，我像个小孩子，对未来尚未有什么担忧，对自己也要求不严，得过且过。后半部分里，我开始真的为自己思考，认真去为了高考奋斗。<br>
-　　那会我还是个中二少年，傻事做过不少，每每想起都感觉很羞耻。一直很后悔在自我介绍的时候向大家介绍自己喜欢二次元😂。从网名、头像，一些日常用品（比如U盘、文件夹之类的小物件），到听歌的风格，都是彻头彻尾的二次元人。虽然大家没有明说过，但心里应该都会想这个人好怪<s>甚至很恶心？现在觉得会这样想的才是正常人hhh</s>吧。在这里向各位同学鞠躬谢罪了。某次课堂活动过后，我负责去超市买些零食奖励参与了的同学，鬼使神差地，我多买了一点（当然是用自己的零花钱），在分发零食的时候装作若无其事地给某个女同学的桌上放了一些。原因什么的，我自己也说不清楚，也没必要太深究。高三的时候，在桌子的里面贴满了二次元明信片，希望后面用到这张桌子的同学不要被吓到吧。<br>
-　　考上高中后我拥有了自己的第一张银行卡，第一部智能机。我也不好意思说自己还是小孩子，贪玩，但那时候确实还是一心想着玩。老师的要求是周日晚上同学们把手机交上去，由胡老师统一保管，周五（或周六）放学再发还，收手机是我负责。规矩执行到后面总会变形，但现在想想，破坏规则从我这个班长开始，的确不应该。记不清细节了，从某次开始，我就有了两部手机，一部上交，一部留在自己手里。这种情况持续了很长一段时间，我不确定老师知不知道，可能知道了但是不点破吧。后来某人发明了更离谱的方法——在网上买模型机上交。这个就不细说了。<br>
-　　城南校区虽然比较偏远，但交通还算方便，而且离市图书馆很近。无事的周末里，图书馆便成了我常去的地方。我向来喜欢读书，而且“食谱”比较杂，什么都看一点<s>但好像看完都没记住</s>，只要100元押金即可办理借书卡免费借阅的市图书馆便成了我的藏宝库。除了借书外，我也常去学校的小书店。有几个同学也会在课间操时间假称身体不舒服而溜去书店。书店中，除了辅导资料外，最多的是村上春树和东野圭吾的作品。我也因此喜欢上，并读了这二位的许多书<s>店里好像还有某人喜欢的渡边淳一</s>。说来，三体三部曲我也是在这里买的，这三本应该是班里被阅读最多的书了。那两年买的书（高三搬去老校区，那边没书店），加上三年里订阅的杂志，在我毕业搬回永丰的时候，着实造成了不小的麻烦，因此我吸取教训，这两年很少买实体书了。<br>
-<img src="https://arslantu.github.io/post-images/1607066093904.jpg" alt="" loading="lazy"><br>
-<img src="https://arslantu.github.io/post-images/1607066106116.jpg" alt="" loading="lazy"></p>
-<p>2020年12月4日<br>
-未完</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Scrapy爬虫多开]]></title>
-        <id>https://arslantu.github.io/post/y173tv/</id>
-        <link href="https://arslantu.github.io/post/y173tv/">
-        </link>
-        <updated>2020-11-22T10:58:59.000Z</updated>
-        <content type="html"><![CDATA[<p>Scrapy爬虫框架在实际使用时，单个项目内一次只能运行一个爬虫。<br>
-如果想一次运行多个爬虫，可以手动修改配置文件。<br>
-按如下步骤操作：</p>
-<p>首先由此获取crawl命令的源码<br>
-在spiders文件夹的同级目录下创建一个文件夹，名称自拟。<br>
-随后进入该文件夹，创建.py文件，名称依然可以自拟。<br>
-将crawl命令源码复制进去。<br>
-其他部分保持不变，我们重新编写run()方法如下：</p>
-<pre><code># 获取爬虫列表
-spd_loader_list = self.crawler_process.spider_loader.list()
-# 遍历各爬虫
-for spname in spd_loader_list or args:
-    self.crawler_process.crawl(spname, **opts.spargs)
-    print(&quot;此时启动的爬虫为：&quot; + spname)
-self.crawler_process.start()
-</code></pre>
-<p>在此文件同级目录下创建初始化文件，文件名为：init.py<br>
-最后我们需要添加自定义命令。在settings.py文件中，添加<br>
-<code>COMMANDS_MODULE='项目核心目录.自定义命令源码目录'</code><br>
-其中项目核心目录名即为项目命，源码目录名即为step2中所创建文件夹名。<br>
-做完上述步骤后，在命令行中输入<code>scrapy -h</code>并执行，应当可以看到我们自定义的命令名。<br>
-创建几个爬虫然后测试运行即可看到效果。</p>
-<p>2020年11月22日</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[多线程Python网页爬虫]]></title>
-        <id>https://arslantu.github.io/post/u3ydhb/</id>
-        <link href="https://arslantu.github.io/post/u3ydhb/">
-        </link>
-        <updated>2020-11-18T05:51:01.000Z</updated>
-        <content type="html"><![CDATA[<p>今天尝试改进之前的爬虫，利用多线程与队列提高爬取效率。<br>
-想法是分为三个线程：</p>
-<p>线程1负责逐页爬取帖子的url并将其置入队列中。<br>
-线程2负责逐个获取帖子的标题、图片，并根据标题命名保存。<br>
-线程3为控制线程，每60秒检测一次队列，在队列为空时终止程序。<br>
-测试过程中依然存在一些问题：</p>
-<p>虽然使用了多线程，但线程1与2间运行速度相差过大，运行依然低效，整个爬取过程耗时2500s。<br>
-若使用<code>exit（）</code>结束程序，在VSCode内运行时会报错，但实际上并不是错误。<br>
-最后，我本意是用搜狗微信来爬取公众号文章，但搜狗存在反扒机制，现阶段我还不会解决，以后再说。<br>
-以下为全部代码，涉及网站的url等信息以星号隐去：</p>
-<pre><code>import re
-import urllib.request
-import urllib.error
-import threading
-import queue
-import time
 
-urlqueue = queue.Queue()
-headers = [
-    ('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36')
-]
-opener = urllib.request.build_opener(urllib.request.HTTPSHandler, urllib.request.HTTPHandler)
-opener.addheaders = headers
-urllib.request.install_opener(opener)
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://arslantu.github.io/tag/V1Q7p8Mdv/" class="tag">
+                    数据结构
+                  </a>
+                
+                  <a href="https://arslantu.github.io/tag/RFU0Xf9KbD/" class="tag">
+                    笔记
+                  </a>
+                
+                  <a href="https://arslantu.github.io/tag/UJFlPs8EO4/" class="tag">
+                    C++
+                  </a>
+                
+                  <a href="https://arslantu.github.io/tag/NvsqdktU-j/" class="tag">
+                    编程
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://arslantu.github.io/post/1x581x/">
+                  <h3 class="post-title">
+                    高中（一）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
 
 
-def dataGet(url):
-    data = opener.open(url).read().decode()
-    return data
 
 
-# 线程1 获取url列表
-class urlGet(threading.Thread):
-    def __init__(self, pageStart, pageEnd, urlqueue):
-        threading.Thread.__init__(self)
-        self.pageStart = pageStart
-        self.pageEnd = pageEnd
-        self.urlqueue = urlqueue
 
-    def run(self):
-        for i in range(self.pageStart, self.pageEnd + 1):
-            print(&quot;正在获取第&quot; + str(i) + &quot;页。\n&quot;)
-            try:
-                url = &quot;https://****/page/&quot; + str(i) + &quot;/&quot;
-                data = dataGet(url)
-                pattern1 = '&lt;ul class=&quot;con_ul clearfix&quot;&gt;.*?&lt;/ul&gt;'
-                pattern2 = 'https:/****/.*?/'
-                data1 = re.compile(pattern1, re.S).findall(data)
-                data2 = re.compile(pattern2, re.S).findall(data1[0])
-                for j in range(len(data2)):
-                    self.urlqueue.put(data2[j])
-                    self.urlqueue.task_done()
-                print(&quot;第&quot; + str(i) + &quot;页获取完毕。&quot;)
-            except urllib.error.URLError as e:
-                if hasattr(e, 'code'):
-                    print(e.code)
-                if hasattr(e, 'reason'):
-                    print(e.reason)
-                time.sleep(10)
-            except Exception as e:
-                print(&quot;exception:&quot; + str(e))
-                time.sleep(1)
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'e66eb5c467de8a2d291e',
+        clientSecret: '561102cb0566fa78a1d64ee69dd53fd722fa1ee2',
+        repo: 'arslantu.github.io',
+        owner: 'ArslanTu',
+        admin: ['ArslanTu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
-# 线程2 逐一处理队列中的url
-class picGet(threading.Thread):
-    def __init__(self, urlqueue):
-        threading.Thread.__init__(self)
-        self.urlqueue = urlqueue
-
-    def run(self):
-        while (True):
-            url = self.urlqueue.get()
-            data = dataGet(url)
-            # 正则表达式过滤信息
-            pattern1 = '&lt;div class=&quot;content&quot;&gt;.*?&lt;div class=&quot;dat_d&quot;'
-            pattern2 = '&lt;img src=&quot;.*?&quot;'
-            pattern3 = '&lt;img src=&quot;'
-            pattern4 = '&quot;'
-            pattern5 = '****.*?****'
-            pattern6 = '****'
-            data1 = re.compile(pattern1, re.S).findall(data)
-            data2 = re.compile(pattern2, re.S).findall(data1[0])
-            for i in range(len(data2)):
-                data2[i] = re.sub(pattern3, &quot;&quot;, data2[i])
-                data2[i] = re.sub(pattern4, &quot;&quot;, data2[i])
-            title = re.compile(pattern5).findall(data)
-            titleText = re.sub(pattern6, &quot;&quot;, title[0])
-            for j in range(len(data2)):
-                imgName = &quot;F:/****/&quot; + titleText + &quot;_&quot; + str(j+1) + &quot;.jpg&quot;
-                try:
-                    print(&quot;正在保存&quot; + titleText + &quot;的第&quot; + str(j+1) + &quot;张图片&quot;)
-                    urllib.request.urlretrieve(data2[j], filename=imgName)
-                except urllib.error.URLError as e:
-                    if hasattr(e, 'code'):
-                        print(e.code)
-                    if hasattr(e, 'reason'):
-                        print(e.reason)
-                except Exception as e:
-                    print(&quot;exception:&quot; + str(e))
 
 
-# 并行控制程序，若60秒未响应，且url队列为空，则判断执行成功
-class control(threading.Thread):
-    def __init__(self, urlqueue):
-        threading.Thread.__init__(self)
-        self.urlqueue = urlqueue
-
-    def run(self):
-        while(True):
-            print(&quot;程序运行中。。。&quot;)
-            time.sleep(60)
-            if self.urlqueue.empty():
-                time_end = time.time()
-                print(&quot;程序执行完毕！\n&quot;)
-                print('time cost: ' + str(time_end - time_start) + 's')
-                exit()
-
-# 实例化运行
-time_start = time.time()
-pageStart = 1
-pageEnd = 12
-t1 = urlGet(pageStart, pageEnd, urlqueue)
-t1.start()
-t2 = picGet(urlqueue)
-t2.start()
-t3 = control(urlqueue)
-t3.start()
-</code></pre>
-<p>2020年11月18日</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[网页爬虫异常”403 Forbidden“的解决]]></title>
-        <id>https://arslantu.github.io/post/dgw46s/</id>
-        <link href="https://arslantu.github.io/post/dgw46s/">
-        </link>
-        <updated>2020-11-13T05:44:39.000Z</updated>
-        <content type="html"><![CDATA[<p>今天第一次实战python网页爬虫，尝试爬取一个游戏网站上全部的游戏封面图片。<br>
-（这些图片使用外站图床）<br>
-测试中，成功获取到了所有图片的url，但是访问图片url时一直报错“403 Forbidden”。<br>
-（opener添加了headers）<br>
-搜索后我尝试了几个可能的解决方法：</p>
-<ul>
-<li>多写几个headers，每次随机抽取使用</li>
-<li>设置若干代理服务器</li>
-<li>设置<code>time.sleep()</code>以降低访问频率</li>
-</ul>
-<p>但都解决不了问题。<br>
-在翻看其他人写的爬虫时，我注意到有些爬虫的headers中除了User-Agent还有一项Referer。<br>
-于是我仔细地看了遍页面的Request Headers，发现有一项“referer”的值正是该游戏网站的url。<br>
-我猜测，要在headers中添加referer信息“告知”网站这是真实用户的访问请求，爬虫才能正常访问。<br>
-给headers添加<code>(&quot;Referer&quot;, &quot;https://****.fun&quot;)</code>后，爬虫果然可以进行正常爬取。</p>
-<p>PS.<br>
-初次编写爬虫，虽然可以正常运行并爬取了3000多张图片，但是爬取速度并不理想。<br>
-下一步学习编写多线程爬虫来提高运行效率。</p>
-<p>2020年11月13日</p>
-]]></content>
-    </entry>
-</feed>
+  </body>
+</html>
