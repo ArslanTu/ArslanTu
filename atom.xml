@@ -2,14 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://arslantu.github.io</id>
     <title>星黎殿</title>
-    <updated>2020-12-31T10:36:03.986Z</updated>
+    <updated>2021-01-02T06:09:42.706Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://arslantu.github.io"/>
     <link rel="self" href="https://arslantu.github.io/atom.xml"/>
     <subtitle>一只菜鸟的旅程。</subtitle>
     <logo>https://arslantu.github.io/images/avatar.png</logo>
     <icon>https://arslantu.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, 星黎殿</rights>
+    <rights>All rights reserved 2021, 星黎殿</rights>
+    <entry>
+        <title type="html"><![CDATA[阅读分享 2020.12.31]]></title>
+        <id>https://arslantu.github.io/post/c6ofwg/</id>
+        <link href="https://arslantu.github.io/post/c6ofwg/">
+        </link>
+        <updated>2020-12-31T06:07:16.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="摘录">摘录：</h2>
+<p>史铁生　《我与地坛》</p>
+<blockquote>
+<p>我一连几小时专心致志地想关于死的事，也以同样的耐心和方式想过我为什么要出生。这样想了好几年，最后事情终于弄明白了：一个人，出生了，这就不再是一个可以辩论的问题，而只是上帝交给他的一个事实；上帝在交给我们这件事实的时候，已经顺便保证了它的结果，所以死是一件不必急于求成的事，死是一个必然会降临的节日。这样想过之后我安心多了，眼前的一切不再那么可怕。比如你起早熬夜准备考试的时候，忽然想起有一个长长的假期在前面等待你，你会不会觉得轻松一点？并且庆幸并且感激这样的安排？</p>
+</blockquote>
+<blockquote>
+<p>谁又能把这世界想个明白呢？世上的很多事是不堪说的。你可以抱怨上帝何以要降诸多苦难给这人间，你也可以为消灭种种苦难而奋斗，并为此享有崇高与骄傲，但只要你再多想一步你就会坠入深深的迷茫了：假如世界上没有了苦难，世界还能够存在么？要是没有愚钝，机智还有什么光荣呢？要是没了丑陋，漂亮又怎么维系自己的幸运？要是没有了恶劣和卑下，善良与高尚又将如何界定自己又如何成为美德呢？要是没有了残疾，健全会否因其司空见惯而变得腻烦和乏味呢？我常梦想着在人间彻底消灭残疾，但可以相信，那时将由患病者代替残疾人去承担同样的苦难。如果能够把疾病也全数消灭，那么这份苦难又将由（比如说）像貌丑陋的人去承担了。就算我们连丑陋，连愚昧和卑鄙和一切我们所不喜欢的事物和行为，也都可以统统消灭掉，所有的人都一味健康、漂亮、聪慧、高尚，结果会怎样呢？怕是人间的剧目就全要收场了，一个失去差别的世界将是一条死水，是一块没有感觉没有肥力的沙漠。</p>
+</blockquote>
+<p>史铁生　《活出爱》</p>
+<blockquote>
+<p>一旦走向复杂，人与人就是相互的迷宫。这大概又是人的根本处境。我常常感到这样的矛盾：睁开白天的眼睛，看很多人很多事都可憎恶；睁开夜的眼睛，才发现其实人人都在苦弱地挣扎，惟当互爱……上帝把一个危险性最小的机会给了恋人，期待他们‘打开窗户’。上帝大约是在暗示：如果这样你们还不能相互敞开心扉，你们就毫无希望了；如果这样你们还相互隔离或防范，你们就只配受永恒的惩罚。</p>
+</blockquote>
+<h2 id="文章">文章：</h2>
+<ul>
+<li><a href="https://www.thepaper.cn/newsDetail_forward_10595296">史铁生逝世十周年｜那些我说不出的叹息，你都替我说了</a></li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[数据结构 Chap2 线性表]]></title>
         <id>https://arslantu.github.io/post/6fa82w/</id>
