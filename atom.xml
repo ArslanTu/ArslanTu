@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://arslantu.github.io</id>
     <title>星黎殿</title>
-    <updated>2021-01-11T02:46:26.693Z</updated>
+    <updated>2021-01-11T03:01:10.434Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://arslantu.github.io"/>
     <link rel="self" href="https://arslantu.github.io/atom.xml"/>
@@ -52,7 +52,7 @@ You can also use the database dump feature to create a backup of your files. You
 </ul>
 <p><span class="heimu" title="你知道的太多了">The purpose of the database load feature is to load a dataset into a Sage 300 ERP database that was created by the database dump function. This allows you to move data between different database formats or from different database versions (including programs that have different service packs installed). You require both the .dct file and the folder that is created during the database dump feature to load a dataset.
 </span></p>
-<p>##Chap 2</p>
+<h2 id="chap-2">Chap 2</h2>
 <ul>
 <li>3.Explain segments that are used in account numbers. How many segments can be used in an account number? What is the largest possible size of a segment?</li>
 </ul>
