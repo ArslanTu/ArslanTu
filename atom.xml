@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://arslantu.github.io</id>
     <title>星黎殿</title>
-    <updated>2021-01-02T06:09:42.706Z</updated>
+    <updated>2021-01-11T02:33:16.682Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://arslantu.github.io"/>
     <link rel="self" href="https://arslantu.github.io/atom.xml"/>
@@ -10,6 +10,197 @@
     <logo>https://arslantu.github.io/images/avatar.png</logo>
     <icon>https://arslantu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 星黎殿</rights>
+    <entry>
+        <title type="html"><![CDATA[CA期末简答题]]></title>
+        <id>https://arslantu.github.io/post/fhocx1/</id>
+        <link href="https://arslantu.github.io/post/fhocx1/">
+        </link>
+        <updated>2021-01-11T02:01:11.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="chap-1">Chap 1</h2>
+<ul>
+<li>2.Where do you set up the databases?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">Databases must be set up first in the database engine you are using. For example, at school, you are likely using Microsoft SQL Server and must create the databases in the SQL Server Management Studio. If you are using the student edition, you are using Microsoft SQL Server and must set the databases up in the Microsoft SQL Server Management Studio. After you have created the databases in the database engine you are using, you must create them in the Sage 300 ERP Database Setup Utility program, which is installed with Sage 300 ERP.</span></p>  
+<ul>
+<li>3.Where will you find SAMINC and SAMSYS? What are they?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">SAMINC and SAMSYS are both sample data files. Although the files are installed and the databases are created in both Microsoft SQL and the Database Setup Utility program during the installation of Sage 300 ERP 2012, they must be loaded into Sage 300 ERP using the Data Loader Utility. Instructions on how to load the sample data files into Sage 300 ERP can be found in Lesson 1, page 17.</span></p>
+<ul>
+<li>6.After setting up the company information, can you change the functional currency selected?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">No. The functional currency cannot be changed once it has been selected. If you have selected the wrong functional currency, you must delete the database files through Windows Explorer, delete the databases in both the Sage 300 ERP Database Utility program and the database engine and then recreate the databases again.</span></p>
+<ul>
+<li>7.How many fiscal periods can you set up for your company?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">You can set up 12 or 13 fiscal periods for your company. Select 12 if your fiscal calendar is divided into calendar months. Select 13 if your fiscal calendar is divided into four-week periods. If you select 13, a second field will be displayed where you must indicate which quarter has four fiscal periods.</span></p>
+<ul>
+<li>9.What is the purpose of setting up schedules?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">Schedules are set up so they can be assigned to recurring entries in the General Ledger, Accounts Payable or Accounts Receivable modules that will allow automatic processing of the recurring entries.  Schedules can be created to occur on a daily, weekly, semi-monthly, monthly or yearly basis.</span></p>
+<ul>
+<li>13.In the fiscal period, a period can be locked or unlocked. What is the difference between these two options?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">If a fiscal period is unlocked, you can post transactions to it; if a fiscal period is locked, you cannot post transactions to it.  You can lock or unlock a period at any time.</span></p>
+<ul>
+<li>20.What is the purpose of the database dump feature?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">The purpose of the database dump feature is to extract a Sage 300 ERP database creating a flat-sequential file that allows you to move it from one database format to another. For example, if the school has Microsoft SQL Server installed and you are using the student edition with Microsoft SQL Server installed, the only way to read the files from one database format (version) to another is to perform the database dump feature and then the database load feature. This is also true if you are moving the files from a Microsoft SQL Server database to any of the other databases supported by Sage 300 ERP 2012. 
+<p>You can also use the database dump feature to create a backup of your files. You must perform the database load function when you are ready to load your data.<br>
+</span></p></p>
+<ul>
+<li>22.What is the purpose of the database load feature?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">The purpose of the database load feature is to load a dataset into a Sage 300 ERP database that was created by the database dump function. This allows you to move data between different database formats or from different database versions (including programs that have different service packs installed). You require both the .dct file and the folder that is created during the database dump feature to load a dataset.
+</span></p>
+<p>##Chap 2</p>
+<ul>
+<li>3.Explain segments that are used in account numbers. How many segments can be used in an account number? What is the largest possible size of a segment?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">In Sage 300 ERP Premium edition, an account number can be up to 45 characters in length including delimiters. These characters can be divided into as many as ten segments. The largest possible size of a segment is 15 characters.</span></p>
+<ul>
+<li>6.Where are source codes used?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">Source codes are used when entering batches. They identify the type of transaction entered and the source journal where the transaction originated. You cannot enter transactions in the General Ledger without a source code.  Source Codes can also be printed in user defined Source Journal Reports.</span></p>
+<ul>
+<li>7.List the four print destinations that are available. How do you change the print destination?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">The print destinations are as follows:
+<ol>
+<li>Printer</li>
+<li>Preview (screen)</li>
+<li>File</li>
+<li>E-mail</li>
+</ol>
+<p>You can change the print destination by clicking on File from the menu on the Company Desktop, selecting Print Destination, and then selecting the desired option. You can also double click on the printer icon on the status bar to quickly display the Print Destination window and then make the necessary changes.<br>
+</span></p></p>
+<ul>
+<li>8.What is the purpose of creating Optional Fields in the General Ledger module?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">Optional fields created in the General Ledger module can be used to customize your chart of accounts or store additional information with transaction details.</span></p>
+<h2 id="chap-3">Chap 3</h2>
+<ul>
+<li>2.What is the maximum number of characters allowed in an account?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">Account numbers can be up to 45 characters in length, including segment delimiters.</span></p>
+<ul>
+<li>3.How many segments can be included in an account number?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">A maximum of ten segments can be included in an account number in the Sage 300 ERP 2012 Premium edition. Other versions of the Sage 300 ERP program only allow three segments.</span></p>
+<ul>
+<li>7.List three restrictions for deleting accounts.</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">
+Three restrictions for deleting accounts are:
+<ol>
+<li>it must be inactive</li>
+<li>it may not be used as a retained earnings account</li>
+<li>it may not be used on the allocation tab by an auto allocation account</li>
+</ol>
+<p>For more information, refer to page 117 in the textbook.<br>
+</span></p></p>
+<ul>
+<li>9.Where do you set a default closing account?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">The default closing account is set on the Account tab of the G/L Options form.</span></p>
+<h2 id="chap-4">Chap 4</h2>
+<ul>
+<li>3.What are the two entry modes available for entering General Ledger transactions? What is the difference between them</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">The two entry modes available for entering General Ledger transactions are Normal and Quick.  When you use the Normal entry mode, the cursor stops at each field on every detail line for you to complete. When you use the Quick entry mode, the cursor stops at each field on the first detail line for you to complete; however, the reference and description fields are automatically entered for each subsequent detail line.  Although this information is automatically entered, it can be modified.</span></p>
+<ul>
+<li>6.If you forgot a line in the middle of a batch, how do you add it in its proper place?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">If you press the [INSERT] key, a blank line will be inserted below the current line, allowing you to add a new detail line to the journal entry.</span></p>
+<ul>
+<li>11.What is the purpose of the posting journal?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">The posting journal lists all entries that have been posted to the General Ledger. This report is an important part of your audit trail.</span></p>
+<ul>
+<li>12.What is the purpose of the Create New Year function?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">The purpose of the Create New Year function is to close income and expense accounts to retained earnings, and to establish opening balances for the New Year from the previous year’s ending balances. A batch is automatically created and posted during this process.
+<p>The Create New Year function will automatically remove transaction history that is older than the number of years of fiscal sets and the number of years of transaction detail that is defined to be kept in the G/L Options form.<br>
+</span></p></p>
+<ul>
+<li>13.What is the purpose of the data integrity check feature? How often should a data<br>
+integrity check be performed?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">The purpose of the data integrity check feature is to ensure that your data has not been damaged and is error free. A data integrity check should be performed on a regular basis, and it is a good idea to perform a data integrity check before backing up your data. If you want the data integrity check to fix minor errors, backup your data before performing the Data Integrity Check.</span></p>
+<p>##Chap 5</p>
+<ul>
+<li>2.How do you prevent a budget set from being modified or deleted?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">In order to prevent a budget set from being modified or deleted, you can lock the budget set on the Posting tab of the G/L Options form.</span></p>
+<h2 id="chap-6">Chap 6</h2>
+<ul>
+<li>2.How do you delete a batch?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">Batches are deleted by highlighting the batch in the Batch List window and clicking on the delete button found on the bottom of the screen.  A batch can only be deleted before it is permanently posted. The batch will have a status of Deleted and will be displayed on the Batch List window if the option to Show Posted and Deleted Batches is selected.</span></p>
+<ul>
+<li>5.Explain the difference between posting a batch within the Batch List window and using the Post Batches icon.</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">While in the Batch List window, you can post only one batch at a time by selecting the Post button.  If the batch has not been set ready to post, you will be prompted to set the status to ready to post and then proceed with posting.
+<p>Multiple batches can be posted together by using the Post Batches icon.  Only batches that have a status of ready to post will be posted.<br>
+</span></p></p>
+<ul>
+<li>6.Explain what happens to errors found in a batch during posting.</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">Errors that are found in batches during posting are automatically placed in the next available batch for correction.</span></p>
+<ul>
+<li>8.How do you correct posting errors?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">Posting errors are corrected by opening the batch they have been placed in and making the necessary corrections.  Once the error is corrected, you can post the batch or continue to add other entries to it.  It will no longer be an error batch, just another regular batch.</span></p>
+<ul>
+<li>13.Explain provisional posting.</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">Batches are not posted permanently when you select provisional posting, and they can still be modified or deleted. You may post your batches provisionally (temporarily) to see how they affect your General Ledger. Provisional transactions can be viewed on the trial balance report, the batch status report and the provisional posting journal.</span></p>
+<ul>
+<li>14.Can a batch be modified after it has been provisionally posted? When is the provisionally posted batch deleted?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">A batch can be modified after it has been provisionally posted. The next time you post or provisionally post batches, the provisionally posted status is removed from all provisionally posted batches.  If the provisionally posted batch is within the batches selected for posting, the provisionally posted batch is permanently posted. If the provisionally posted batch was not within the batches selected for posting the next time you post, its status will change back to open.</span></p>
+<ul>
+<li>15.What is the purpose of creating an allocation batch?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">The purpose of creating an allocation batch is to have the General Ledger module generate a transaction that will credit the amount from the allocation account, thus clearing it out, and debiting the accounts assigned to the allocation account according to the percentage you set up for them.</span></p>
+<h2 id="chap-7">Chap 7</h2>
+<ul>
+<li>1.List the options available in the Chart of Accounts window.</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">
+The items available in the Chart of Accounts window are:
+<ol>
+<li>Open</li>
+<li>Transactions</li>
+<li>Comparison</li>
+<li>Budget</li>
+<li>History</li>
+<li>Currency (this option is shown if you have installed the multi-currency module)<br>
+</span></p></li>
+</ol>
+<ul>
+<li>6.While viewing the transactions in the Transaction History window, how do you limit the types of transactions displayed?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">You can limit the type of transactions displayed by entering a source code that will only display transactions for that source code.  To see all transactions, leave the source code blank.</span></p>
+<h2 id="chap-8">Chap 8</h2>
+<ul>
+<li>1.List the month-end procedures.</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">
+The suggested month-end procedures are as follows:
+<ol>
+<li>post all open batches</li>
+<li>perform a data integrity check</li>
+<li>backup your data</li>
+<li>print General Ledger reports</li>
+<li>print Financial Statements<br>
+</span></p></li>
+</ol>
+<ul>
+<li>5.What program is required in order to print the financial statements?</li>
+</ul>
+<p><span class="heimu" title="你知道的太多了">Microsoft Excel version 2003 or higher is required to print the financial statements.  This program must be purchased separately.</span></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[阅读分享 2020.12.31]]></title>
         <id>https://arslantu.github.io/post/c6ofwg/</id>
